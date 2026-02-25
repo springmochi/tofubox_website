@@ -168,6 +168,137 @@
         align-items: center;
     }
 
+    .shelves {
+        position: absolute;
+        width: 100%;
+        height: 50%;
+        display: flex;
+        gap: 5vw;
+        z-index: 5;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .shelf {
+        position: relative;
+        width: 80%;
+        height: 2%;
+        background: #f0f6ff;
+        border: 1px solid var(--color-dark);
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        align-content: center;
+    }
+
+    .books {
+        position: absolute;
+        width: 100%;
+        bottom: 100%;
+        display: flex;
+        gap: 1%;
+        z-index: 5;
+    }
+
+    .book {
+        max-height: 5vw;
+        width: fit-content;
+        background: #f0f6ff;
+        border: 1px solid var(--color-dark);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        overflow: hidden;
+        font-size: clamp(0.1vw, 0.9vw, 1vw);
+        transition: all 0.3s ease-out;
+    }
+
+    .book-title {
+        writing-mode: vertical-rl;
+        text-align: center;
+        white-space: wrap;
+        transform: rotate(180deg);
+    }
+
+    .button {
+        font-size: 1em;
+        color: var(--color-light);
+        border: 1px solid var(--color-dark);
+        border-radius: 1px;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.3s ease-out;
+    }
+
+    .button:hover {
+        background: var(--color-medium);
+    }
+
+    .overlay {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: rgba(0, 0, 0, 0.7);
+        transition: opacity 500ms;
+        visibility: hidden;
+        opacity: 0;
+    }
+
+    .overlay:target {
+        visibility: visible;
+        opacity: 1;
+    }
+
+    .popup {
+        margin: 70px auto;
+        padding: 20px;
+        background: #fff;
+        border-radius: 5px;
+        width: 30%;
+        position: relative;
+        transition: all 5s ease-in-out;
+    }
+
+    .popup h2 {
+        margin-top: 0;
+        color: #333;
+        font-family: Tahoma, Arial, sans-serif;
+    }
+
+    .popup .close {
+        position: absolute;
+        top: 20px;
+        right: 30px;
+        transition: all 200ms;
+        font-size: 30px;
+        font-weight: bold;
+        text-decoration: none;
+        color: #333;
+    }
+
+    .popup .close:hover {
+        color: #06D85F;
+    }
+
+    .popup .content {
+        max-height: 30%;
+        overflow: auto;
+    }
+
+    @media screen and (max-width: 700px) {
+        .box {
+            width: 70%;
+        }
+
+        .popup {
+            width: 70%;
+        }
+    }
+
     .doors {
         position: absolute;
         bottom: calc(0% - var(--corner-size) / 2);
