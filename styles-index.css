@@ -2,12 +2,11 @@
     --color-light: #f5f5f5;
     --color-dark: #1f1f1f;
     --color-medium: #525252;
-    --font-size-sm: 12px;
-    --font-size-md: 16px;
+    --font-size-sm: 16px;
+    --font-size-md: 20px;
     /*Base font size*/
-    --font-size-lg: 21.3px;
-    --font-size-xl: 28.3px;
-    --font-size-2xl: 37.6px;
+    --font-size-lg: 25px;
+    --font-size-xl: 31.25px;
 }
 
 html {
@@ -34,22 +33,22 @@ body {
 
 p {
     font-size: var(--font-size-sm);
+    color: var(--color-dark);
 }
 
 h1 {
-    font-size: var(--font-size-2xl);
+    font-size: var(--font-size-xl);
+    color: var(--color-dark);
 }
 
 h2 {
-    font-size: var(--font-size-xl);
+    font-size: var(--font-size-lg);
+    color: var(--color-dark);
 }
 
 h3 {
-    font-size: var(--font-size-lg);
-}
-
-h4 {
     font-size: var(--font-size-md);
+    color: var(--color-dark);
 }
 
 .viewport-container {
@@ -63,9 +62,18 @@ h4 {
     overflow: hidden;
 }
 
+@media screen and (max-width: 600px) {
+    .viewport-container {
+        --corner-size: calc(3vh + 3vw);
+        max-width: 100vh;
+        max-height: 100vw;
+        /* Smol */
+    }
+}
+
 .center-text {
     position: absolute;
-    top: 20%;
+    top: 15%;
     left: 50%;
     transform: translate(-50%, -50%);
     color: var(--color-dark);
@@ -76,11 +84,11 @@ h4 {
 
 .logo {
     position: absolute;
-    top: 5%;
+    top: 3%;
     left: 50%;
     transform: translateX(-50%);
-    width: 6vw;
-    height: 6vw;
+    width: 7%;
+    aspect-ratio: 1 / 1;
     background-color: #F8F8FF;
     border: 1px solid var(--color-dark);
     border-radius: 50%;
@@ -111,6 +119,7 @@ h4 {
     position: absolute;
     width: var(--corner-size);
     height: calc(100% - var(--corner-size));
+
 }
 
 .left-wall {
@@ -135,7 +144,7 @@ h4 {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    align-content: center;
+    align-items: center;
 }
 
 .corner {
@@ -167,16 +176,17 @@ h4 {
 
 .windows {
     position: absolute;
-    bottom: 5vw;
+    bottom: 10%;
     width: 100%;
+    height: 45%;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 .window-right {
-    width: 7vw;
-    height: 21vw;
+    width: 60%;
+    height: 100%;
     background: #f0f6ff;
     border: solid var(--color-dark);
     border-width: 1px;
@@ -194,8 +204,8 @@ h4 {
 }
 
 .window-left {
-    width: 7vw;
-    height: 21vw;
+    width: 60%;
+    height: 100%;
     background: #f0f6ff;
     border: solid var(--color-dark);
     border-width: 1px;
@@ -259,12 +269,80 @@ h4 {
     transform-origin: 0% 0%;
 }
 
+.frame {
+    height: 60%;
+    width: 20%;
+    border: 2px solid var(--color-dark);
+    position: relative;
+    perspective: 1000px;
+    text-align: center;
+}
+
+.door-double {
+    background-color: #F8F8FF;
+    height: 100%;
+    width: 50%;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#left-door {
+    top: 0;
+    left: 0;
+    border-right: 2px solid var(--color-medium);
+    transform-origin: left;
+    transition: transform 0.5s;
+}
+
+#right-door {
+    top: 0;
+    right: 0;
+    border-left: 2px solid var(--color-medium);
+    transform-origin: right;
+    transition: transform 0.5s;
+}
+
+.shape {
+    border: 1px solid var(--color-medium);
+    width: 60%;
+    height: 40%;
+}
+
+.knob {
+    width: 6%;
+    height: 10%;
+    background-color: var(--color-dark);
+    position: absolute;
+}
+
+#left-knob {
+    top: 50%;
+    right: 10%;
+}
+
+#right-knob {
+    top: 50%;
+    left: 10%;
+}
+
+.frame:hover #left-door {
+    transform: rotateY(-140deg);
+}
+
+.frame:hover #right-door {
+    transform: rotateY(140deg);
+}
+
+
 .label {
     color: var(--color-dark);
-    font-size: var(--font-size-md);
+    font-size: var(--font-size-sm);
     position: absolute;
     bottom: 100%;
     left: 50%;
     transform: translateX(-50%);
-    margin-bottom: 0.3em;
+    margin-bottom: 0.1em;
 }
